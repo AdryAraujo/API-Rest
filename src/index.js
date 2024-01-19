@@ -1,6 +1,6 @@
-import { response } from "express";
+import "dotenv/config"
 import app from "./app.js"
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("server started");
 });

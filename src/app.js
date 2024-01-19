@@ -1,5 +1,6 @@
 import express from 'express';
 import conectaDatabase from './config/dbConnect.js';
+import livros from './models/livros.js';
 
 const conexao = await conectaDatabase();
 conexao.on("error", (erro) => {
@@ -13,14 +14,6 @@ conexao.once("open",() =>{
 const app = express();
 app.use(express.json());
 
-
-const livros = [
-    {
-        id:2,
-        titulo: "Trono de Vidro" 
-    }
-]
-
 function buscaLivro(id){
     return livros.findIndex(livro => {
         return livro.id === Number(id)
@@ -30,10 +23,6 @@ function buscaLivro(id){
 app.get("/", (req, res) => {
   res.status(200).send("Curso de Node.js");
 });
-
-app.get("/livros", (req, res) => {
-    res.status(200).json(livros)
-})
 
 app.get("/livros/:id", (req, res) => {
     const index = buscaLivro(req.params.id)
