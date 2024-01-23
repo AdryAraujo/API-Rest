@@ -5,9 +5,9 @@ const routes = express.Router();
 
 routes.get("/autores", AutorController.ListarAutores);
 routes.post("/autores", AutorController.cadastrarAutor);
-routes.get("/autores/:id", AutorController.ListarAutorPorId)
-routes.patch("/autores/:id", AutorController.atualizarAutor)
-routes.delete("/autores/:id", AutorController.deletarAutor)
+routes.get("/autores/:id", AutorController.ListarAutorPorId);
+routes.patch("/autores/:id", AutorController.atualizarAutor);
+routes.delete("/autores/:id", AutorController.deletarAutor);
 
 
-export default routes
+export default routes;

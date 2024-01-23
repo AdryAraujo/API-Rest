@@ -5,9 +5,10 @@ const routes = express.Router();
 
 routes.get("/livros", LivroController.ListarLivros);
 routes.post("/livros", LivroController.cadastrarLivro);
-routes.get("/livros/:id", LivroController.ListarLivroPorId)
-routes.patch("/livros/:id", LivroController.atualizarLivro)
-routes.delete("/livros/:id", LivroController.deletarLivro)
+routes.get("/livros/busca", LivroController.listarLivrosPorEditora);
+routes.get("/livros/:id", LivroController.ListarLivroPorId);
+routes.patch("/livros/:id", LivroController.atualizarLivro);
+routes.delete("/livros/:id", LivroController.deletarLivro);
 
 
-export default routes
+export default routes;
