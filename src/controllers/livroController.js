@@ -31,12 +31,11 @@ class LivroController {
       const busca = await processaBusca(req.query);
 
       if(busca !== null){
-        const livrosResultado = await livro.find(busca);
-        res.status(200).json(livrosResultado);
-      }else{
+        const livrosResultado = await livro.find(busca._id);
+      }else {
         res.status(200).send([]);
       }
-    } catch (erro) {
+    } catch(erro) {
       next(erro);
     }
   };
@@ -94,7 +93,7 @@ async function processaBusca(parametros) {
   if (editora) busca.editora = regexEdit;
   if (titulo) busca.titulo = regexTit;
   if (nomeAutor) {
-    const autores = await autor.findOne({ nome: regexAut});
+    const autores = await autor.findOne({ nomeAutor: regexAut });
     if (autores !== null) {
       busca.autores = autores._id;
     } else {
